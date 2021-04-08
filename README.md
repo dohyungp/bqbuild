@@ -20,17 +20,22 @@ Replace gcloud cli arguments.
 * `<branch-pattern>`: branch-pattern(e.g `^master*`, `^release*`)
 
 ```sh
-$ gcloud beta builds triggers create cloud-source-repositories  --name="<trigger-name>" --repo="<procedure-repository-name>" --branch-pattern="<branch-pattern>"  --build-config="cloudbuild.yaml"
+$ gcloud beta builds triggers create cloud-source-repositories \
+  --name="<trigger-name>" \
+  --repo="<procedure-repository-name>" \
+  --branch-pattern="<branch-pattern>" \
+  --build-config="cloudbuild.yaml"
 ```
 
 ### 3. Add BigQuery Job Role to Cloud build Service Account
 
 Replace gcloud cli arguments.
 
+`<my-project>`: project id
 `<cloudbuild-user>`: when you enabled it user is created on service account. please find and replace it for add `bigquery.jobUser` role.
 
 ```sh
-$ gcloud projects add-iam-policy-binding my-project \
+$ gcloud projects add-iam-policy-binding <my-project> \
     --member=user:<cloudbuild-user>@cloudbuild.gserviceaccount.com --role=roles/bigquery.jobUser
 ```
 
